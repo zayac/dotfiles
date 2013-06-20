@@ -1,17 +1,10 @@
 syntax on
-set incsearch
 set expandtab
 set termencoding=utf-8
-set smarttab
 set ts=4
 set shiftwidth=4
 set number
-set t_Co=256
-set notimeout
-set nocompatible
-set ttimeout
-set ttimeoutlen=10
-set ttyfast
+
 
 " Enable Pathogen package manager
 runtime autoload/pathogen.vim
@@ -25,15 +18,23 @@ set background=dark
 colorscheme solarized
 
 " Tabs
-map <silent> <C-T> :tabnew<CR>
+map <silent> <C-H> :tabnew<CR>
 map <silent> <C-J> :tabprevious<CR>
 map <silent> <C-K> :tabnext<CR>
 imap <silent> <C-T> <ESC>:tabnew<CR>i
 imap <silent> <C-W> <ESC>:tabclose<CR>i
 
-nnoremap <silent> <F7> :TagbarToggle<CR> 
-nnoremap <silent> <F8> :TlistToggle<CR> 
 nnoremap <silent> <F3> :NERDTreeToggle<CR> 
+map! <S-F1> <Esc>:ccl<CR>
+map <S-F1> :ccl<CR>
+map! <F1> <Esc>:cw 6<CR>
+map <F1> :cw 6<CR>
+map! <F5> <Esc>:make<CR><F1>
+map <F5> :make<CR>
+
+set viminfo='10,\"100,:20,%,n~/.viminfo
+
+set clipboard=unnamed
 
 " Syntastic
 let g:syntastic_enable_signs = 1
@@ -41,7 +42,6 @@ let g:syntastic_error_symbol         = '✗'
 let g:syntastic_style_error_symbol   = '✗'
 let g:syntastic_warning_symbol       = '⚠'
 let g:syntastic_style_warning_symbol = '⚠'
-
 
 " Powerline
 set laststatus=2 " Always display the statusline in all windows
