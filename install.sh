@@ -82,7 +82,7 @@ if [[ -z $(pip show $PYTHON_PKGS) ]]; then
   set -e
 fi
 
-source $ANSIBLE_ENV_SETUP
+source $ANSIBLE_ENV_SETUP &> $DEV_NULL
 
 HOST_OS=$(uname)
 

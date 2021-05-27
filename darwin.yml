@@ -2,3 +2,4 @@
 - hosts: localhost
   roles:
     - { role: homebrew, tags: homebrew }
+    - { role: dotfiles, tags: dotfiles }

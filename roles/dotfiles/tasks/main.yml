@@ -1,0 +1,45 @@
+---
+- name: make ~/.config
+  file: path=~/.config state=directory
+
+- name: install vim-plug
+  command: curl -fLo {{ ansible_env.PWD}}/roles/dotfiles/files/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+- name: create nvim symlinks
+  file: src={{ ansible_env.PWD }}/roles/dotfiles/files/nvim
+        path=~/.config/nvim
+        state=link
+        force=yes
+
+- name: install nvim plugins
+  shell: nvim +PlugInstall +qall --headless
+
+- name: install oh-my-zsh
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+  shell: ZSH=/Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+- name: install zsh spaceship prompt
+  command: git clone https://github.com/denysdovhan/spaceship-prompt.git /Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh/themes/spaceship-prompt --depth=1
+
+- name: create zsh spaceship prompt symlink
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+  file: src=/Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme
+        path=/Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh/themes/spaceship.zsh-theme
+        state=link
+        force=yes
+
+- name: install zsh autosuggestions
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+  command: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/oh-my-zsh/plugins/zsh-autosuggestions
+
+- name: create symlinks
+  file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item }}
+        path=~/{{ item }}
+        state=link
+        force=yes
+  loop: '{{dotfile_files}}'
+
+

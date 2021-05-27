@@ -9,12 +9,10 @@ tap "homebrew/cask"
 tap "homebrew/core"
 
 brew "git"
-brew "go"
 brew "neovim"
 brew "python"
 brew "rbenv"
 brew "tmux"
-brew "wget"
 
 # General applications.
 cask "1password"
