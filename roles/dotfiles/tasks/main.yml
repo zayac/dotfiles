@@ -14,6 +14,13 @@
 - name: install nvim plugins
   shell: nvim +PlugInstall +qall --headless
 
+- name: install neovim Ruby plugin
+  environment:
+    PATH: "{{ lookup('env', 'USER') }}/.rbenv/bin:{{ ansible_env.PATH }}"
+  shell: |
+    rbenv global 3.0.1
+    gem install neovim
+
 - name: install oh-my-zsh
   become: true
   become_user: "{{ lookup('env', 'USER') }}"
@@ -41,5 +48,3 @@
         state=link
         force=yes
   loop: '{{dotfile_files}}'
-
-
