@@ -1,0 +1,22 @@
+---
+- name: install Homebrew 
+  shell: |
+    export CI=1
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+- name: add Homebrew to .zprofile
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+  lineinfile:
+    path: "/Users/{{ lookup('env', 'USER') }}/.zprofile"
+    line: 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+    insertafter: EOF
+
+- name: prepare Brewfile
+  template: dest="~/Library/Preferences/Brewfile" mode=0644 src=Brewfile
+
+- name: bundle
+  shell: source /Users/{{ lookup('env', 'USER') }}/.zprofile && brew bundle chdir="~/Library/Preferences"
+
+- name: clean up old versions
+  shell: source /Users/{{ lookup('env', 'USER') }}/.zprofile && brew bundle chdir="~/Library/Preferences" && brew cleanup
