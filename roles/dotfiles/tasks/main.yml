@@ -21,13 +21,25 @@
     rbenv global 3.0.1
     gem install neovim
 
+- name: check for oh-my-zsh
+  stat:
+    path: /Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh
+  register: oh_my_zsh_dir
+
 - name: install oh-my-zsh
   become: true
   become_user: "{{ lookup('env', 'USER') }}"
   shell: ZSH=/Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  when: not oh_my_zsh_dir.stat.exists
+
+- name: check for zsh spaceship prompt
+  stat:
+    path: /Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh/themes/spaceship-prompt
+  register: zsh_spaceship_prompt_dir
 
 - name: install zsh spaceship prompt
   command: git clone https://github.com/denysdovhan/spaceship-prompt.git /Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh/themes/spaceship-prompt --depth=1
+  when: not zsh_spaceship_prompt_dir.stat.exists
 
 - name: create zsh spaceship prompt symlink
   become: true
@@ -37,10 +49,16 @@
         state=link
         force=yes
 
+- name: check for zsh autosuggestions
+  stat:
+    path: /Users/{{ lookup('env', 'USER') }}/.config/oh-my-zsh/plugins/zsh-autosuggestions
+  register: zsh_autosuggestions_dir
+
 - name: install zsh autosuggestions
   become: true
   become_user: "{{ lookup('env', 'USER') }}"
   command: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/oh-my-zsh/plugins/zsh-autosuggestions
+  when: not zsh_autosuggestions_dir.stat.exists
 
 - name: create symlinks
   file: src={{ ansible_env.PWD }}/roles/dotfiles/files/{{ item }}

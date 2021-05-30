@@ -16,8 +16,8 @@ brew "tmux"
 
 # General applications.
 cask "1password"
+cask "alacritty"
 cask "google-chrome"
-cask "iterm2"
 cask "skype"
 cask "spotify"
 cask "sublime-text"
