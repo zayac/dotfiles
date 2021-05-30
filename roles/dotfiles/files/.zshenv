@@ -7,5 +7,3 @@ alias vim=nvim
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
-
-XDG_CONFIG_HOME=~/.config
