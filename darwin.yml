@@ -3,3 +3,4 @@
   roles:
     - { role: homebrew, tags: homebrew }
     - { role: dotfiles, tags: dotfiles }
+    - { role: fonts, tags: fonts }
