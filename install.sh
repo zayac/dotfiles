@@ -3,6 +3,8 @@
 # 1. Sets up a local Python environment via virtualenv
 # 2. Installs Ansible prerequisites
 # 3. Hands off to Ansible to complete actual installation of dotfiles etc.
+#
+# Do not forget to run `git submodule update` after cloning the repo.
 
 set -e
 
