@@ -4,7 +4,9 @@
 # 2. Installs Ansible prerequisites
 # 3. Hands off to Ansible to complete actual installation of dotfiles etc.
 #
-# Do not forget to run `git submodule update` after cloning the repo.
+# After cloning the repository, please do the following:
+# 1. Run `git submodule update --init --recursive`.
+# 2. Ensure that pip3 is installed.
 
 set -e
 
