@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$USER/.config/oh-my-zsh"
+export ZSH="~/.config/oh-my-zsh"
 
 ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ORDER=(
