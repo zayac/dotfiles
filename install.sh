@@ -92,6 +92,8 @@ HOST_OS=$(uname)
 
 if [ "$HOST_OS" = 'Darwin' ]; then
   ansible-playbook --ask-become-pass -i inventory ${VERBOSE+-v} ${ROLES} darwin.yml
+elif [ "$HOST_OS" = 'Darwin' ]; then
+  ansible-playbook --ask-become-pass -i inventory ${VERBOSE+-v} ${ROLES} linux.yml
 else
   echo "Unknown host OS: $HOST_OS"
   exit 1
