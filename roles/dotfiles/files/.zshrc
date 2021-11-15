@@ -5,10 +5,8 @@ ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ORDER=(
   dir
   git
+  hg
   char
-)
-SPACESHIP_RPROMPT_ORDER=(
-  exec_time
 )
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 
