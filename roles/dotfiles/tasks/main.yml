@@ -15,11 +15,8 @@
   shell: nvim +PlugInstall +qall --headless
 
 - name: install neovim Ruby plugin
-  environment:
-    PATH: "{{ lookup('env', 'USER') }}/.rbenv/bin:{{ ansible_env.PATH }}"
-  shell: |
-    rbenv global 3.0.1
-    gem install neovim
+  become: true
+  shell: gem install neovim
 
 - name: check for oh-my-zsh
   stat:

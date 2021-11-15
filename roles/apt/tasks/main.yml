@@ -4,3 +4,10 @@
   apt:
     name: neovim
     state: present
+
+# required for `gem install neovim`
+- name: install ruby-dev
+  become: true
+  apt:
+    name: ruby-dev
+    state: present
