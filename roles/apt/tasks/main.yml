@@ -5,6 +5,12 @@
     name: neovim
     state: present
 
+- name: install rbenv
+  become: true
+  apt:
+    name: rbenv
+    state: present
+
 # required for `gem install neovim`
 - name: install ruby-dev
   become: true
