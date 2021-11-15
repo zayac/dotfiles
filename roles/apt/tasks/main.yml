@@ -1,0 +1,6 @@
+---
+- name: install nvim
+  become: true
+  apt:
+    name: neovim
+    state: present

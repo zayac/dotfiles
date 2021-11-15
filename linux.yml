@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
   roles:
+    - { role: apt, tags: apt }
     - { role: dotfiles, tags: dotfiles }
     - { role: fonts, tags: fonts }
