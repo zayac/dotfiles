@@ -1,0 +1,11 @@
+#
+# Command aliases
+#
+
+alias :q=exit
+alias :sp='test -n "$TMUX" && tmux split-window'
+alias :vs='test -n "$TMUX" && tmux split-window -h'
+alias :wq=exit
+alias g=git
+alias t=tmux
+alias v=vim

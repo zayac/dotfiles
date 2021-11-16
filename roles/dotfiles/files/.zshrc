@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=${HOME}/.config/oh-my-zsh
+export ZSH=$HOME/.config/oh-my-zsh
 
 ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ORDER=(
@@ -23,3 +23,9 @@ source $ZSH/oh-my-zsh.sh
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+#
+# Other
+#
+
+source $HOME/.zsh/aliases

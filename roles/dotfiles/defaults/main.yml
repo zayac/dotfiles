@@ -1,4 +1,6 @@
 ---
 dotfile_files:
+  - .tmux.conf
+  - .zsh
   - .zshenv
   - .zshrc
