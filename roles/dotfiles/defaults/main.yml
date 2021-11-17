@@ -4,3 +4,4 @@ dotfile_files:
   - .zsh
   - .zshenv
   - .zshrc
+  - tools
